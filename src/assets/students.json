@@ -1,0 +1,338 @@
+[
+    {
+        "id": "Shiroko",
+        "name": "シロコ",
+        "fullname": "砂狼シロコ",
+        "school": "アビドス",
+        "age": 16,
+        "releaseDate": "2021-02-04",
+        "rarity": 3,
+        "limited": false,
+        "combatClass": "striker",
+        "role": "attacker",
+        "position": "middle",
+        "attackType": "explosive",
+        "armorType": "light",
+        "affinity": {
+            "urban": "s",
+            "outdoors": "b",
+            "indoors": "d"
+        },
+        "weapon": "AR"
+    },
+    {
+        "id": "Aru",
+        "name": "アル",
+        "fullname": "陸八魔アル",
+        "school": "ゲヘナ",
+        "age": 16,
+        "releaseDate": "2021-02-04",
+        "rarity": 3,
+        "limited": false,
+        "combatClass": "striker",
+        "role": "attacker",
+        "position": "back",
+        "attackType": "explosive",
+        "armorType": "light",
+        "affinity": {
+            "urban": "s",
+            "outdoors": "b",
+            "indoors": "d"
+        },
+        "weapon": "SR"
+    },
+    {
+        "id": "Eimi",
+        "name": "エイミ",
+        "fullname": "和泉元エイミ",
+        "school": "ミレニアム",
+        "age": 15,
+        "releaseDate": "2021-02-04",
+        "rarity": 3,
+        "limited": false,
+        "combatClass": "striker",
+        "role": "tank",
+        "position": "front",
+        "attackType": "explosive",
+        "armorType": "light",
+        "affinity": {
+            "urban": "s",
+            "outdoors": "b",
+            "indoors": "d"
+        },
+        "weapon": "SG"
+    },
+    {
+        "id": "Haruna",
+        "name": "ハルナ",
+        "fullname": "黒館ハルナ",
+        "school": "ゲヘナ",
+        "age": 17,
+        "releaseDate": "2021-02-04",
+        "rarity": 3,
+        "limited": false,
+        "combatClass": "striker",
+        "role": "attacker",
+        "position": "back",
+        "attackType": "mystic",
+        "armorType": "heavy",
+        "affinity": {
+            "urban": "s",
+            "outdoors": "d",
+            "indoors": "b"
+        },
+        "weapon": "SR"
+    },
+    {
+        "id": "Hibiki",
+        "name": "ヒビキ",
+        "fullname": "猫塚ヒビキ",
+        "school": "ミレニアム",
+        "age": 15,
+        "releaseDate": "2021-02-04",
+        "rarity": 3,
+        "limited": false,
+        "combatClass": "special",
+        "role": "attacker",
+        "position": "back",
+        "attackType": "explosive",
+        "armorType": "heavy",
+        "affinity": {
+            "urban": "s",
+            "outdoors": "b",
+            "indoors": "b"
+        },
+        "weapon": "MT"
+    },
+    {
+        "id": "Hifumi",
+        "name": "ヒフミ",
+        "fullname": "阿慈谷ヒフミ",
+        "school": "トリニティ",
+        "age": 16,
+        "releaseDate": "2021-02-04",
+        "rarity": 3,
+        "limited": false,
+        "combatClass": "striker",
+        "role": "support",
+        "position": "middle",
+        "attackType": "piercing",
+        "armorType": "light",
+        "affinity": {
+            "urban": "d",
+            "outdoors": "s",
+            "indoors": "b"
+        },
+        "weapon": "AR"
+    },
+    {
+        "id": "Hina",
+        "name": "ヒナ",
+        "fullname": "空崎ヒナ",
+        "school": "ゲヘナ",
+        "age": 17,
+        "releaseDate": "2021-02-04",
+        "rarity": 3,
+        "limited": false,
+        "combatClass": "striker",
+        "role": "attacker",
+        "position": "back",
+        "attackType": "explosive",
+        "armorType": "heavy",
+        "affinity": {
+            "urban": "s",
+            "outdoors": "c",
+            "indoors": "c"
+        },
+        "weapon": "MG"
+    },
+    {
+        "id": "Hoshino",
+        "name": "ホシノ",
+        "fullname": "小鳥遊ホシノ",
+        "school": "アビドス",
+        "age": 17,
+        "releaseDate": "2021-02-04",
+        "rarity": 3,
+        "limited": false,
+        "combatClass": "striker",
+        "role": "tank",
+        "position": "front",
+        "attackType": "piercing",
+        "armorType": "heavy",
+        "affinity": {
+            "urban": "d",
+            "outdoors": "s",
+            "indoors": "b"
+        },
+        "weapon": "SG"
+    },
+    {
+        "id": "Iori",
+        "name": "イオリ",
+        "fullname": "銀鏡イオリ",
+        "school": "ゲヘナ",
+        "age": 16,
+        "releaseDate": "2021-02-04",
+        "rarity": 3,
+        "limited": false,
+        "combatClass": "striker",
+        "role": "attacker",
+        "position": "back",
+        "attackType": "piercing",
+        "armorType": "heavy",
+        "affinity": {
+            "urban": "c",
+            "outdoors": "c",
+            "indoors": "s"
+        },
+        "weapon": "SR"
+    },
+    {
+        "id": "Izumi",
+        "name": "イズミ",
+        "fullname": "獅子堂イズミ",
+        "school": "ゲヘナ",
+        "age": 16,
+        "releaseDate": "2021-02-04",
+        "rarity": 3,
+        "limited": false,
+        "combatClass": "striker",
+        "role": "attacker",
+        "position": "back",
+        "attackType": "explosive",
+        "armorType": "light",
+        "affinity": {
+            "urban": "s",
+            "outdoors": "d",
+            "indoors": "b"
+        },
+        "weapon": "MG"
+    },
+    {
+        "id": "Airi",
+        "name": "アイリ",
+        "fullname": "栗村アイリ",
+        "school": "トリニティ",
+        "age": 15,
+        "releaseDate": "2021-02-04",
+        "rarity": 2,
+        "limited": false,
+        "combatClass": "special",
+        "role": "support",
+        "position": "back",
+        "attackType": "explosive",
+        "armorType": "light",
+        "affinity": {
+            "urban": "a",
+            "outdoors": "d",
+            "indoors": "a"
+        },
+        "weapon": "SMG"
+    },
+    {
+        "id": "Akane",
+        "name": "アカネ",
+        "fullname": "室笠アカネ",
+        "school": "ミレニアム",
+        "age": 16,
+        "releaseDate": "2021-02-04",
+        "rarity": 2,
+        "limited": false,
+        "combatClass": "striker",
+        "role": "support",
+        "position": "middle",
+        "attackType": "penetration",
+        "armorType": "light",
+        "affinity": {
+            "urban": "a",
+            "outdoors": "a",
+            "indoors": "d"
+        },
+        "weapon": "HG"
+    },
+    {
+        "id": "Akari",
+        "name": "アカリ",
+        "fullname": "鰐淵アカリ",
+        "school": "ゲヘナ",
+        "age": 17,
+        "releaseDate": "2021-02-04",
+        "rarity": 2,
+        "limited": false,
+        "combatClass": "striker",
+        "role": "attacker",
+        "position": "middle",
+        "attackType": "explosive",
+        "armorType": "heavy",
+        "affinity": {
+            "urban": "a",
+            "outdoors": "b",
+            "indoors": "b"
+        },
+        "weapon": "AR"
+    },
+    {
+        "id": "Asuna",
+        "name": "アスナ",
+        "fullname": "一之瀬アスナ",
+        "school": "ミレニアム",
+        "age": 17,
+        "releaseDate": "2021-02-04",
+        "rarity": 1,
+        "limited": false,
+        "combatClass": "striker",
+        "role": "attacker",
+        "position": "middle",
+        "attackType": "mystic",
+        "armorType": "light",
+        "affinity": {
+            "urban": "b",
+            "outdoors": "b",
+            "indoors": "b"
+        },
+        "weapon": "AR"
+    },
+    {
+        "id": "Ayane",
+        "name": "アヤネ",
+        "fullname": "奥空アヤネ",
+        "school": "アビドス",
+        "age": 15,
+        "releaseDate": "2021-02-04",
+        "rarity": 2,
+        "limited": false,
+        "combatClass": "special",
+        "role": "healer",
+        "position": "back",
+        "attackType": "piercing",
+        "armorType": "light",
+        "affinity": {
+            "urban": "d",
+            "outdoors": "a",
+            "indoors": "a"
+        },
+        "weapon": "HG"
+    },
+    {
+        "id": "Chinatsu",
+        "name": "チナツ",
+        "fullname": "火宮チナツ",
+        "school": "ゲヘナ",
+        "age": 15,
+        "releaseDate": "2021-02-04",
+        "rarity": 1,
+        "limited": false,
+        "combatClass": "special",
+        "role": "healer",
+        "position": "back",
+        "attackType": "piercing",
+        "armorType": "light",
+        "affinity": {
+            "urban": "b",
+            "outdoors": "b",
+            "indoors": "b"
+        },
+        "weapon": "HG"
+    }
+]
