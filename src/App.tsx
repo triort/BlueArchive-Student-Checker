@@ -6,10 +6,8 @@ import { CharacterCard } from './components/CharacterCard';
 import { StatusBar } from './components/StatusBar';
 import { SaveImageButton } from './components/SaveImageButton';
 
-// キャラクターデータを別ファイルとして管理
 const CharacterData = (): Student[] => {
   try {
-    // JSONデータはすでに配列形式なので、直接マッピング
     return studentsData.map(student => {
       const starRarity = '☆'.repeat(Number(student.rarity));
 
@@ -18,7 +16,7 @@ const CharacterData = (): Student[] => {
         ...student,
         rarity: starRarity,
         owned: false,
-        attackType: student.attackType, // タイプミス修正
+        attackType: student.attackType,
       };
     });
   } catch (error) {
@@ -27,9 +25,9 @@ const CharacterData = (): Student[] => {
   }
 };
 
-// メインアプリケーションコンポーネント
+// メイン
 const CharacterOwnershipChecker = () => {
-  // データをJSONファイルから読み込む
+  // jsonデータを読み込み
   const initialCharacters = CharacterData();
   const [characters, setCharacters] = useState(initialCharacters);
   const [sortBy, setSortBy] = useState('id');
@@ -40,11 +38,11 @@ const CharacterOwnershipChecker = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const canvasRef = useRef(null);
 
-  // 所持数と所持率の計算
+  // 所持率
   const ownedCount = characters.filter(char => char.owned).length;
   const ownershipPercentage = (ownedCount / characters.length * 100).toFixed(1);
 
-  // フィルタリングとソートの適用
+  // 生徒のフィルタリングとソート
   const filteredAndSortedCharacters = characters
     .filter(char => {
       // 検索フィルターの修正
@@ -76,7 +74,6 @@ const CharacterOwnershipChecker = () => {
           comparison = (a.element || '').localeCompare(b.element || '');
           break;
         default:
-          // idがstring型のため、数値比較からlocaleCompareに変更
           comparison = new Date(a.releaseDate) - new Date(b.releaseDate);
       }
 
@@ -198,7 +195,7 @@ const CharacterOwnershipChecker = () => {
         />
 
         {/* キャラクターリスト */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 mb-6">
+        <div className="gap-4 mb-6 grid grid-cols-5 ">
           {filteredAndSortedCharacters.map(char => (
             <CharacterCard
               key={char.id}
