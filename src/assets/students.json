@@ -389,7 +389,7 @@
         "combatClass": "striker",
         "role": "support",
         "position": "middle",
-        "attackType": "penetration",
+        "attackType": "piercing",
         "armorType": "light",
         "affinity": {
             "urban": "a",

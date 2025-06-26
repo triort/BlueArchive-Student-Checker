@@ -5,7 +5,7 @@ export type Student = {
     school: string;
     age?: number;
     releaseDate: string;
-    rarity: string | number;
+    rarity: number;
     limited: boolean;
     combatClass: string;
     role: string;

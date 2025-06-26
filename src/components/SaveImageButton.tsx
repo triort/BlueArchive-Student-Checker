@@ -1,4 +1,4 @@
-export const SaveImageButton = ({ onClick }) => {
+export const SaveImageButton = ({ onClick }: { onClick: () => void }) => {
     return (
         <div className="text-center mb-6">
             <button

@@ -1,4 +1,10 @@
-export const StatusBar = ({ ownedCount, totalCount, ownershipPercentage }) => {
+interface StatusBarProps {
+    ownedCount: number;
+    totalCount: number;
+    ownershipPercentage: number;
+}
+
+export const StatusBar = ({ ownedCount, totalCount, ownershipPercentage }: StatusBarProps) => {
     return (
         <div className="bg-blue-100 p-4 rounded-lg mb-6 text-center">
             <p className="text-xl">

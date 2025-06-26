@@ -1,4 +1,20 @@
-export const FilterPanel = ({
+interface FilterPanelProps {
+    searchTerm: string;
+    setSearchTerm: (value: string) => void;
+    filterRarity: string;
+    setFilterRarity: (value: string) => void;
+    filterElement: string;
+    setFilterElement: (value: string) => void;
+    filterOwned: string;
+    setFilterOwned: (value: string) => void;
+    sortBy: string;
+    setSortBy: (value: string) => void;
+    sortDirection: 'asc' | 'desc';
+    setSortDirection: (value: 'asc' | 'desc') => void;
+    toggleAllByRarity: (rarity: string, owned: boolean) => void;
+}
+
+export const FilterPanel: React.FC<FilterPanelProps> = ({
     searchTerm, setSearchTerm,
     filterRarity, setFilterRarity,
     filterElement, setFilterElement,
@@ -7,15 +23,8 @@ export const FilterPanel = ({
     sortDirection, setSortDirection,
     toggleAllByRarity
 }) => {
-    // レアリティ対応表
-    const rarityMapping = {
-        'all': 'すべて',
-        '☆': '☆',
-        '☆☆': '☆☆',
-        '☆☆☆': '☆☆☆'
-    };
 
-    const handleSortChange = (newSortBy) => {
+    const handleSortChange = (newSortBy: string) => {
         if (newSortBy === sortBy) {
             setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc');
         } else {
@@ -48,9 +57,24 @@ export const FilterPanel = ({
                         className="w-full p-2 border rounded"
                     >
                         <option value="all">すべて</option>
-                        <option value="☆☆☆">☆☆☆</option>
-                        <option value="☆☆">☆☆</option>
-                        <option value="☆">☆</option>
+                        <option value="3">☆☆☆</option>
+                        <option value="2">☆☆</option>
+                        <option value="1">☆</option>
+                    </select>
+                </div>
+
+                {/* 攻撃タイプフィルタ */}
+                <div>
+                    <label className="block text-sm font-medium mb-1">攻撃タイプ</label>
+                    <select
+                        value={filterElement}
+                        onChange={(e) => setFilterElement(e.target.value)}
+                        className="w-full p-2 border rounded"
+                    >
+                        <option value="all">すべて</option>
+                        <option value="explosive">爆発</option>
+                        <option value="piercing">貫通</option>
+                        <option value="mystic">神秘</option>
                     </select>
                 </div>
             </div>
