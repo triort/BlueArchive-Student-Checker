@@ -6,35 +6,38 @@ interface CharacterCardProps {
 }
 
 export const CharacterCard: React.FC<CharacterCardProps> = ({ character, toggleOwnership }) => {
-    // レアリティに応じた色を設定
+    // レアリティに応じた色を設定（フラットデザイン用）
     const rarityColorClass =
-        character.rarity === 3 ? 'text-yellow-600' :
-            character.rarity === 2 ? 'text-purple-600' : 'text-blue-600';
+        character.rarity === 3 ? 'text-yellow-500' :
+            character.rarity === 2 ? 'text-purple-500' : 'text-blue-500';
 
     return (
         <div
             onClick={() => toggleOwnership(character.id)}
-            className={`p-3 rounded-lg cursor-pointer transition-transform transform hover:scale-105 text-center ${character.owned ? 'bg-blue-100 border-2 border-blue-500' : 'bg-gray-100'
-                }`}
+            className={`flat-card character-card cursor-pointer text-center transition-opacity duration-200`}
         >
-            <div className="mb-2 flex justify-center">
-                {/* キャラクター画像 */}
-                <img
-                    src={`/img/student/${character.id}.webp`}
-                    alt={character.name}
-                    className={`rounded-full ${character.owned ? 'opacity-100' : 'opacity-50'}`}
-                    width="80"
-                    height="80"
-                />
+            <div className="mb-3 flex justify-center">
+                <div className={`w-20 h-20 rounded-lg overflow-hidden ${character.owned ? 'border-green-400' : 'border-gray-300'
+                    }`}>
+                    <img
+                        src="/svg/placeholder.svg"
+                        alt={character.name}
+                        className={`w-full h-full object-cover ${character.owned ? 'opacity-100' : 'opacity-60'
+                            }`}
+                    />
+                </div>
             </div>
-            <div className="font-bold">{character.name}</div>
-            <div className={`text-sm ${rarityColorClass}`}>
-                {'☆'.repeat(character.rarity)}
+            <div className="font-semibold text-gray-800 mb-1">{character.name}</div>
+            <div className={`text-sm font-medium mb-2 ${rarityColorClass}`}>
+                {'★'.repeat(character.rarity)}
             </div>
-            <div className="text-xs text-gray-500">
-                {new Date(character.releaseDate).toLocaleDateString()}
+            <div className="text-xs text-gray-500 mb-2">
+                {new Date(character.releaseDate).toLocaleDateString('ja-JP')}
             </div>
-            <div className="mt-2 text-sm font-bold">
+            <div className={`text-xs font-semibold px-2 py-1 rounded ${character.owned
+                ? 'bg-green-500 text-white'
+                : 'bg-gray-400 text-white'
+                }`}>
                 {character.owned ? '所持' : '未所持'}
             </div>
         </div>

@@ -3,7 +3,7 @@ export const SaveImageButton = ({ onClick }: { onClick: () => void }) => {
         <div className="text-center mb-6">
             <button
                 onClick={onClick}
-                className="px-6 py-3 bg-green-500 text-white rounded-lg font-bold hover:bg-green-600"
+                className="px-8 py-3 bg-green-500 hover:bg-green-600 text-white font-semibold rounded transition-colors duration-200"
             >
                 所持状況画像を保存
             </button>

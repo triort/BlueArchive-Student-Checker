@@ -3,13 +3,25 @@
 @tailwind utilities;
 
 :root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  font-family: system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  /* フラットデザインカラーパレット */
+  --primary-color: #3498db;
+  --primary-dark: #2980b9;
+  --secondary-color: #95a5a6;
+  --success-color: #2ecc71;
+  --warning-color: #f39c12;
+  --danger-color: #e74c3c;
+  --background-color: #ecf0f1;
+  --surface-color: #ffffff;
+  --text-primary: #2c3e50;
+  --text-secondary: #7f8c8d;
+  --border-color: #bdc3c7;
+
+  color: var(--text-primary);
+  background-color: var(--background-color);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -40,38 +52,75 @@ h1 {
   line-height: 1.1;
 }
 
+/* フラットデザイン用のボタンスタイル */
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+  border-radius: 4px;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: var(--primary-color);
+  color: var(--surface-color);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: background-color 0.2s ease;
 }
 
-button:hover {
-  border-color: #646cff;
+button:disabled {
+  background-color: var(--secondary-color);
+  cursor: not-allowed;
 }
 
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+/* フラットデザイン用の共通スタイル */
+.flat-card {
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  box-shadow: none;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
+.flat-input {
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  padding: 0.75rem;
+  font-size: 0.875rem;
+  background-color: var(--surface-color);
+  color: var(--text-primary);
+  width: fit-content;
+}
 
-  a:hover {
-    color: #747bff;
-  }
+.flat-input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
 
-  button {
-    background-color: #f9f9f9;
-  }
+.character-card {
+  margin: 10px;
+}
+
+.filter-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 2px;
+  background-color: white;
+}
+
+.filter-panel {
+  padding: 20px 40px;
+  display: flex;
+  gap: 20px;
+}
+
+.filter-item {
+  margin: 10px 0;
+
+}
+
+.sort-button {
+  margin: 0 8px;
+}
+
+img {
+  border-radius: 8px 8px 0 0;
 }

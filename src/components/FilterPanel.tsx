@@ -34,27 +34,27 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
     };
 
     return (
-        <div className="bg-gray-100 p-4 rounded-lg mb-6">
+        <div className="flat-card filter-panel p-6 mb-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                 {/* 検索 */}
-                <div>
+                <div className="filter-item">
                     <label className="block text-sm font-medium mb-1">キャラクター名検索</label>
                     <input
                         type="text"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="w-full p-2 border rounded"
+                        className="flat-input w-full"
                         placeholder="キャラクター名を入力..."
                     />
                 </div>
 
                 {/* レアリティフィルタ */}
-                <div>
+                <div className="filter-item">
                     <label className="block text-sm font-medium mb-1">レアリティ</label>
                     <select
                         value={filterRarity}
                         onChange={(e) => setFilterRarity(e.target.value)}
-                        className="w-full p-2 border rounded"
+                        className="flat-input w-full"
                     >
                         <option value="all">すべて</option>
                         <option value="3">☆☆☆</option>
@@ -64,12 +64,12 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
                 </div>
 
                 {/* 攻撃タイプフィルタ */}
-                <div>
+                <div className="filter-item">
                     <label className="block text-sm font-medium mb-1">攻撃タイプ</label>
                     <select
                         value={filterElement}
                         onChange={(e) => setFilterElement(e.target.value)}
-                        className="w-full p-2 border rounded"
+                        className="flat-input w-full"
                     >
                         <option value="all">すべて</option>
                         <option value="explosive">爆発</option>
@@ -81,12 +81,12 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {/* 所持フィルタ */}
-                <div>
+                <div className="filter-item">
                     <label className="block text-sm font-medium mb-1">所持状態</label>
                     <select
                         value={filterOwned}
                         onChange={(e) => setFilterOwned(e.target.value)}
-                        className="w-full p-2 border rounded"
+                        className="flat-input w-full"
                     >
                         <option value="all">すべて</option>
                         <option value="owned">所持</option>
@@ -95,13 +95,13 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
                 </div>
 
                 {/* ソート */}
-                <div>
+                <div className="filter-item">
                     <label className="block text-sm font-medium mb-1">ソート</label>
                     <div className="flex">
                         <select
                             value={sortBy}
                             onChange={(e) => handleSortChange(e.target.value)}
-                            className="w-full p-2 border rounded-l"
+                            className="flat-input w-full rounded-r-none border-r-0"
                         >
                             {/* <option value="id">実装順</option> */}
                             <option value="releaseDate">実装日</option>
@@ -111,7 +111,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
                         </select>
                         <button
                             onClick={() => setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')}
-                            className="px-4 bg-blue-500 text-white rounded-r"
+                            className="sort-button text-white"
                         >
                             {sortDirection === 'asc' ? '↑' : '↓'}
                         </button>
@@ -121,28 +121,28 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
                 {/* 一括操作ボタン */}
                 {/* ☆☆☆ */}
                 <div className="flex items-end gap-2">
-                    <button onClick={() => toggleAllByRarity('☆☆☆', true)} className="p-2 bg-yellow-500 text-white rounded">
+                    <button onClick={() => toggleAllByRarity('☆☆☆', true)} className="px-3 py-2 bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-medium rounded">
                         ☆☆☆すべて所持
                     </button>
-                    <button onClick={() => toggleAllByRarity('☆☆☆', false)} className="p-2 bg-gray-500 text-white rounded">
+                    <button onClick={() => toggleAllByRarity('☆☆☆', false)} className="px-3 py-2 bg-gray-500 hover:bg-gray-600 text-white text-sm font-medium rounded">
                         ☆☆☆すべて未所持
                     </button>
                 </div>
                 {/* ☆☆ */}
                 <div className="flex items-end gap-2">
-                    <button onClick={() => toggleAllByRarity('☆☆', true)} className="p-2 bg-yellow-500 text-white rounded">
+                    <button onClick={() => toggleAllByRarity('☆☆', true)} className="px-3 py-2 bg-purple-500 hover:bg-purple-600 text-white text-sm font-medium rounded">
                         ☆☆すべて所持
                     </button>
-                    <button onClick={() => toggleAllByRarity('☆☆', false)} className="p-2 bg-gray-500 text-white rounded">
+                    <button onClick={() => toggleAllByRarity('☆☆', false)} className="px-3 py-2 bg-gray-500 hover:bg-gray-600 text-white text-sm font-medium rounded">
                         ☆☆すべて未所持
                     </button>
                 </div>
                 {/* ☆ */}
                 <div className="flex items-end gap-2">
-                    <button onClick={() => toggleAllByRarity('☆', true)} className="p-2 bg-yellow-500 text-white rounded">
+                    <button onClick={() => toggleAllByRarity('☆', true)} className="px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium rounded">
                         ☆すべて所持
                     </button>
-                    <button onClick={() => toggleAllByRarity('☆', false)} className="p-2 bg-gray-500 text-white rounded">
+                    <button onClick={() => toggleAllByRarity('☆', false)} className="px-3 py-2 bg-gray-500 hover:bg-gray-600 text-white text-sm font-medium rounded">
                         ☆すべて未所持
                     </button>
                 </div>
