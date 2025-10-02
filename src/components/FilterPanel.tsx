@@ -34,27 +34,27 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
     };
 
     return (
-        <div className="flat-card filter-panel p-6 mb-6">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+        <div className="flat-card filter-panel mb-8 space-y-8 rounded-2xl bg-gradient-to-br from-white to-slate-50 p-6 shadow-sm">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
                 {/* 検索 */}
-                <div className="filter-item">
-                    <label className="block text-sm font-medium mb-1">キャラクター名検索</label>
+                <div className="filter-item space-y-2">
+                    <label className="block text-sm font-semibold text-slate-600">キャラクター名検索</label>
                     <input
                         type="text"
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
-                        className="flat-input w-full"
+                        className="flat-input w-full rounded-xl bg-slate-50/40 text-sm"
                         placeholder="キャラクター名を入力..."
                     />
                 </div>
 
                 {/* レアリティフィルタ */}
-                <div className="filter-item">
-                    <label className="block text-sm font-medium mb-1">レアリティ</label>
+                <div className="filter-item space-y-2">
+                    <label className="block text-sm font-semibold text-slate-600">レアリティ</label>
                     <select
                         value={filterRarity}
                         onChange={(e) => setFilterRarity(e.target.value)}
-                        className="flat-input w-full"
+                        className="flat-input w-full rounded-xl  bg-slate-50/40 text-sm"
                     >
                         <option value="all">すべて</option>
                         <option value="3">☆☆☆</option>
@@ -64,12 +64,12 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
                 </div>
 
                 {/* 攻撃タイプフィルタ */}
-                <div className="filter-item">
-                    <label className="block text-sm font-medium mb-1">攻撃タイプ</label>
+                <div className="filter-item space-y-2">
+                    <label className="block text-sm font-semibold text-slate-600">攻撃タイプ</label>
                     <select
                         value={filterElement}
                         onChange={(e) => setFilterElement(e.target.value)}
-                        className="flat-input w-full"
+                        className="flat-input w-full rounded-xl  bg-slate-50/40 text-sm"
                     >
                         <option value="all">すべて</option>
                         <option value="explosive">爆発</option>
@@ -79,14 +79,14 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
                 </div>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
                 {/* 所持フィルタ */}
-                <div className="filter-item">
-                    <label className="block text-sm font-medium mb-1">所持状態</label>
+                <div className="filter-item space-y-2">
+                    <label className="block text-sm font-semibold text-slate-600">所持状態</label>
                     <select
                         value={filterOwned}
                         onChange={(e) => setFilterOwned(e.target.value)}
-                        className="flat-input w-full"
+                        className="flat-input w-full rounded-xl  bg-slate-50/40 text-sm"
                     >
                         <option value="all">すべて</option>
                         <option value="owned">所持</option>
@@ -95,15 +95,14 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
                 </div>
 
                 {/* ソート */}
-                <div className="filter-item">
-                    <label className="block text-sm font-medium mb-1">ソート</label>
-                    <div className="flex">
+                <div className="filter-item space-y-2">
+                    <label className="block text-sm font-semibold text-slate-600">ソート</label>
+                    <div className="flex overflow-hidden rounded-xl   bg-slate-50/60">
                         <select
                             value={sortBy}
                             onChange={(e) => handleSortChange(e.target.value)}
-                            className="flat-input w-full rounded-r-none border-r-0"
+                            className="w-full bg-transparent px-4 py-3 text-sm focus:outline-none"
                         >
-                            {/* <option value="id">実装順</option> */}
                             <option value="releaseDate">実装日</option>
                             <option value="name">名前</option>
                             <option value="rarity">レアリティ</option>
@@ -111,7 +110,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
                         </select>
                         <button
                             onClick={() => setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')}
-                            className="sort-button text-white"
+                            className="flex items-center justify-center bg-slate-600 px-4 text-sm font-semibold text-white transition-colors hover:bg-slate-700"
                         >
                             {sortDirection === 'asc' ? '↑' : '↓'}
                         </button>
@@ -119,32 +118,43 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
                 </div>
 
                 {/* 一括操作ボタン */}
-                {/* ☆☆☆ */}
-                <div className="flex items-end gap-2">
-                    <button onClick={() => toggleAllByRarity('☆☆☆', true)} className="px-3 py-2 bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-medium rounded">
-                        ☆☆☆すべて所持
-                    </button>
-                    <button onClick={() => toggleAllByRarity('☆☆☆', false)} className="px-3 py-2 bg-gray-500 hover:bg-gray-600 text-white text-sm font-medium rounded">
-                        ☆☆☆すべて未所持
-                    </button>
-                </div>
-                {/* ☆☆ */}
-                <div className="flex items-end gap-2">
-                    <button onClick={() => toggleAllByRarity('☆☆', true)} className="px-3 py-2 bg-purple-500 hover:bg-purple-600 text-white text-sm font-medium rounded">
-                        ☆☆すべて所持
-                    </button>
-                    <button onClick={() => toggleAllByRarity('☆☆', false)} className="px-3 py-2 bg-gray-500 hover:bg-gray-600 text-white text-sm font-medium rounded">
-                        ☆☆すべて未所持
-                    </button>
-                </div>
-                {/* ☆ */}
-                <div className="flex items-end gap-2">
-                    <button onClick={() => toggleAllByRarity('☆', true)} className="px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white text-sm font-medium rounded">
-                        ☆すべて所持
-                    </button>
-                    <button onClick={() => toggleAllByRarity('☆', false)} className="px-3 py-2 bg-gray-500 hover:bg-gray-600 text-white text-sm font-medium rounded">
-                        ☆すべて未所持
-                    </button>
+                <div className="filter-item space-y-3 md:col-span-2 xl:col-span-3">
+                    <label className="block text-sm font-semibold text-slate-600">レアリティ一括操作</label>
+                    <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                        <div className="flex items-center justify-between rounded-xl  bg-amber-50/70 px-4 py-3">
+                            <span className="text-sm font-semibold text-amber-600">☆☆☆</span>
+                            <div className="flex gap-2">
+                                <button onClick={() => toggleAllByRarity('☆☆☆', true)} className="rounded-lg bg-amber-500 px-3 py-2 text-xs font-semibold text-white transition hover:bg-amber-600">
+                                    すべて所持
+                                </button>
+                                <button onClick={() => toggleAllByRarity('☆☆☆', false)} className="rounded-lg bg-slate-400 px-3 py-2 text-xs font-semibold text-white transition hover:bg-slate-500">
+                                    すべて未所持
+                                </button>
+                            </div>
+                        </div>
+                        <div className="flex items-center justify-between rounded-xl  bg-purple-50/70 px-4 py-3">
+                            <span className="text-sm font-semibold text-purple-600">☆☆</span>
+                            <div className="flex gap-2">
+                                <button onClick={() => toggleAllByRarity('☆☆', true)} className="rounded-lg bg-purple-500 px-3 py-2 text-xs font-semibold text-white transition hover:bg-purple-600">
+                                    すべて所持
+                                </button>
+                                <button onClick={() => toggleAllByRarity('☆☆', false)} className="rounded-lg bg-slate-400 px-3 py-2 text-xs font-semibold text-white transition hover:bg-slate-500">
+                                    すべて未所持
+                                </button>
+                            </div>
+                        </div>
+                        <div className="flex items-center justify-between rounded-xl bg-sky-50/70 px-4 py-3">
+                            <span className="text-sm font-semibold text-sky-600">☆</span>
+                            <div className="flex gap-2">
+                                <button onClick={() => toggleAllByRarity('☆', true)} className="rounded-lg bg-sky-500 px-3 py-2 text-xs font-semibold text-white transition hover:bg-sky-600">
+                                    すべて所持
+                                </button>
+                                <button onClick={() => toggleAllByRarity('☆', false)} className="rounded-lg bg-slate-400 px-3 py-2 text-xs font-semibold text-white transition hover:bg-slate-500">
+                                    すべて未所持
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

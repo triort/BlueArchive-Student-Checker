@@ -48,15 +48,15 @@ const App = () => {
         />
 
         {/* フィルタートグルボタン */}
-        <div className="mb-6 flex justify-end">
+        <div className="mb-[16px] flex justify-end">
           <button
             onClick={() => setIsFilterVisible(!isFilterVisible)}
-            className="items-center filter-button"
+            className="filter-button rounded-full w-10 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
           >
             <img
               src="/svg/filter-list-svgrepo-com.svg"
               alt="フィルター"
-              className="w-2 h-2"
+              className="h-[40x] w-[40px] mx-auto"
             />
           </button>
         </div>

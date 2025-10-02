@@ -5,40 +5,61 @@ interface CharacterCardProps {
     toggleOwnership: (id: string) => void;
 }
 
+const rarityBadgeClass: Record<number, string> = {
+    3: 'bg-gradient-to-r from-amber-400 to-yellow-500 text-white',
+    2: 'bg-gradient-to-r from-violet-400 to-purple-500 text-white',
+    1: 'bg-gradient-to-r from-sky-400 to-blue-500 text-white',
+};
+
 export const CharacterCard: React.FC<CharacterCardProps> = ({ character, toggleOwnership }) => {
-    // レアリティに応じた色を設定（フラットデザイン用）
-    const rarityColorClass =
-        character.rarity === 3 ? 'text-yellow-500' :
-            character.rarity === 2 ? 'text-purple-500' : 'text-blue-500';
+    const imageSrc = `/img/student/${character.id}.webp`;
+
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            toggleOwnership(character.id);
+        }
+    };
 
     return (
         <div
+            role="button"
+            tabIndex={0}
+            aria-pressed={character.owned}
             onClick={() => toggleOwnership(character.id)}
-            className={`flat-card character-card cursor-pointer text-center transition-opacity duration-200`}
+            onKeyDown={handleKeyDown}
+            className={`character-card group relative flex cursor-pointer flex-col items-center gap-5 rounded-2xl  from-slate-50 via-white to-slate-100 px-5 pb-5 pt-6 text-center shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl  `}
         >
-            <div className="mb-3 flex justify-center">
-                <div className={`w-20 h-20 rounded-lg overflow-hidden ${character.owned ? 'border-green-400' : 'border-gray-300'
-                    }`}>
-                    <img
-                        src="/svg/placeholder.svg"
-                        alt={character.name}
-                        className={`w-full h-full object-cover ${character.owned ? 'opacity-100' : 'opacity-60'
-                            }`}
-                    />
+            <div className="relative w-full overflow-hidden rounded-xl shadow-inner">
+                {character.owned && (
+                    <span className="absolute left-3 top-3 z-10 rounded-full  px-3 py-1 text-xs font-semibold text-white shadow">
+                    </span>
+                )}
+                <img
+                    src={imageSrc}
+                    alt={character.name}
+                    loading="lazy"
+                    onError={(event) => {
+                        event.currentTarget.onerror = null;
+                        event.currentTarget.src = '/svg/placeholder.svg';
+                    }}
+                    className={`aspect-square w-full object-cover transition duration-300 ${character.owned ? 'opacity-95 group-hover:scale-[1.02]' : 'opacity-80 grayscale group-hover:grayscale-0'}`}
+                />
+            </div>
+
+            <div className="flex w-full flex-col items-center gap-1 px-3">
+                <div className="text-base font-semibold text-slate-900">{character.name}</div>
+                <div className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide shadow-sm ${rarityBadgeClass[character.rarity] ?? 'bg-slate-200 text-slate-600'}`}>
+                    {'★'.repeat(character.rarity)}
+                </div>
+                <div className="text-xs text-slate-500">
+                    {new Date(character.releaseDate).toLocaleDateString('ja-JP')}
                 </div>
             </div>
-            <div className="font-semibold text-gray-800 mb-1">{character.name}</div>
-            <div className={`text-sm font-medium mb-2 ${rarityColorClass}`}>
-                {'★'.repeat(character.rarity)}
-            </div>
-            <div className="text-xs text-gray-500 mb-2">
-                {new Date(character.releaseDate).toLocaleDateString('ja-JP')}
-            </div>
-            <div className={`text-xs font-semibold px-2 py-1 rounded ${character.owned
-                ? 'bg-green-500 text-white'
-                : 'bg-gray-400 text-white'
-                }`}>
-                {character.owned ? '所持' : '未所持'}
+
+            <div className="mt-3 flex w-full flex-wrap justify-center gap-3 px-3 text-xs font-medium text-slate-600">
+                <span className="rounded-md bg-slate-100 px-3 py-1">{character.school}</span>
+
             </div>
         </div>
     );

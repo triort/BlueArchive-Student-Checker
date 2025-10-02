@@ -8,7 +8,7 @@ interface CharacterListProps {
 
 export const CharacterList: React.FC<CharacterListProps> = ({ characters, toggleOwnership }) => {
   return (
-    <div className="mb-6 grid grid-cols-3 md:grid-cols-5 ">
+    <div className="mb-10 grid grid-cols-2 gap-x-[16px] gap-y-[64px] md:gap-x-[32px] sm:grid-cols-6 lg:grid-cols-8">
       {characters.map(char => (
         <CharacterCard
           key={char.id}
