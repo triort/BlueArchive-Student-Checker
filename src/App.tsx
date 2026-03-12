@@ -38,30 +38,51 @@ const App = () => {
   const { canvasRef, exportImage } = useImageExporter(students, ownershipPercentage, ownedCount);
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4">
+    <div className="min-h-screen pb-12">
+      {/* Header */}
+      <header className="mb-8 text-center">
+        <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl"
+          style={{
+            background: 'linear-gradient(135deg, var(--ba-sky-600), var(--ba-sky-400))',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+          }}
+        >
+          ブルアカ 生徒所持チェッカー
+        </h1>
+        <p className="mt-2 text-sm" style={{ color: 'var(--neutral-500)' }}>
+          キャラクターをクリックして所持状況を管理
+        </p>
+      </header>
 
-        <StatusBar
-          ownedCount={ownedCount}
-          totalCount={totalCount}
-          ownershipPercentage={ownershipPercentage}
-        />
+      <StatusBar
+        ownedCount={ownedCount}
+        totalCount={totalCount}
+        ownershipPercentage={ownershipPercentage}
+      />
 
-        {/* フィルタートグルボタン */}
-        <div className="mb-[16px] flex justify-end">
-          <button
-            onClick={() => setIsFilterVisible(!isFilterVisible)}
-            className="filter-button rounded-full w-10 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:bg-slate-50 hover:shadow-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
-          >
-            <img
-              src="/svg/filter-list-svgrepo-com.svg"
-              alt="フィルター"
-              className="h-[40x] w-[40px] mx-auto"
-            />
-          </button>
-        </div>
+      {/* Filter Toggle + Save */}
+      <div className="mb-6 flex items-center justify-between gap-3">
+        <SaveImageButton onClick={exportImage} />
+        <button
+          onClick={() => setIsFilterVisible(!isFilterVisible)}
+          className="glass-card flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:shadow-lg"
+          style={{
+            color: isFilterVisible ? 'white' : 'var(--ba-sky-600)',
+            background: isFilterVisible
+              ? 'linear-gradient(135deg, var(--ba-sky-500), var(--ba-sky-600))'
+              : 'var(--glass-bg)',
+          }}
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+            <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+          </svg>
+          フィルター
+        </button>
+      </div>
 
-        {isFilterVisible && (
+      {isFilterVisible && (
+        <div className="animate-fade-in-up">
           <FilterPanel
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}
@@ -77,22 +98,20 @@ const App = () => {
             setSortDirection={setSortDirection}
             toggleAllByRarity={toggleAllByRarity}
           />
-        )}
+        </div>
+      )}
 
-        <CharacterList
-          characters={filteredAndSortedCharacters}
-          toggleOwnership={toggleOwnership}
-        />
+      <CharacterList
+        characters={filteredAndSortedCharacters}
+        toggleOwnership={toggleOwnership}
+      />
 
-        <SaveImageButton onClick={exportImage} />
-
-        <canvas
-          ref={canvasRef}
-          width="800"
-          height="1000"
-          className="hidden"
-        />
-      </div>
+      <canvas
+        ref={canvasRef}
+        width="800"
+        height="1000"
+        className="hidden"
+      />
     </div>
   );
 };

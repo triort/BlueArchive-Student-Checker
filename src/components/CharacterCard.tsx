@@ -5,14 +5,15 @@ interface CharacterCardProps {
     toggleOwnership: (id: string) => void;
 }
 
-const rarityBadgeClass: Record<number, string> = {
-    3: 'bg-gradient-to-r from-amber-400 to-yellow-500 text-white',
-    2: 'bg-gradient-to-r from-violet-400 to-purple-500 text-white',
-    1: 'bg-gradient-to-r from-sky-400 to-blue-500 text-white',
+const rarityConfig: Record<number, { gradient: string; label: string }> = {
+    3: { gradient: 'linear-gradient(135deg, #F2C94C, #E6A817)', label: '★★★' },
+    2: { gradient: 'linear-gradient(135deg, #BB6BD9, #9B51E0)', label: '★★' },
+    1: { gradient: 'linear-gradient(135deg, #56CCF2, #2D9CDB)', label: '★' },
 };
 
 export const CharacterCard: React.FC<CharacterCardProps> = ({ character, toggleOwnership }) => {
     const imageSrc = `/img/student/${character.id}.webp`;
+    const rarity = rarityConfig[character.rarity] ?? { gradient: 'var(--neutral-300)', label: '?' };
 
     const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
         if (event.key === 'Enter' || event.key === ' ') {
@@ -28,13 +29,20 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character, toggleO
             aria-pressed={character.owned}
             onClick={() => toggleOwnership(character.id)}
             onKeyDown={handleKeyDown}
-            className={`character-card group relative flex cursor-pointer flex-col items-center gap-5 rounded-2xl  from-slate-50 via-white to-slate-100 px-5 pb-5 pt-6 text-center shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-xl  `}
+            className="character-card glass-card group relative cursor-pointer overflow-hidden p-2.5"
         >
-            <div className="relative w-full overflow-hidden rounded-xl shadow-inner">
-                {character.owned && (
-                    <span className="absolute left-3 top-3 z-10 rounded-full  px-3 py-1 text-xs font-semibold text-white shadow">
-                    </span>
-                )}
+            {/* Owned check badge */}
+            {character.owned && (
+                <div className="absolute right-2 top-2 z-10 flex h-6 w-6 items-center justify-center rounded-full shadow-md"
+                    style={{ background: 'linear-gradient(135deg, #27AE60, #2ECC71)' }}>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                </div>
+            )}
+
+            {/* Image */}
+            <div className="relative overflow-hidden rounded-xl">
                 <img
                     src={imageSrc}
                     alt={character.name}
@@ -43,23 +51,24 @@ export const CharacterCard: React.FC<CharacterCardProps> = ({ character, toggleO
                         event.currentTarget.onerror = null;
                         event.currentTarget.src = '/svg/placeholder.svg';
                     }}
-                    className={`aspect-square w-full object-cover transition duration-300 ${character.owned ? 'opacity-95 group-hover:scale-[1.02]' : 'opacity-80 grayscale group-hover:grayscale-0'}`}
+                    className={`aspect-square w-full object-cover transition-all duration-300 ${character.owned
+                            ? 'group-hover:scale-105'
+                            : 'opacity-40 grayscale group-hover:opacity-70 group-hover:grayscale-[50%]'
+                        }`}
                 />
             </div>
 
-            <div className="flex w-full flex-col items-center gap-1 px-3">
-                <div className="text-base font-semibold text-slate-900">{character.name}</div>
-                <div className={`rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide shadow-sm ${rarityBadgeClass[character.rarity] ?? 'bg-slate-200 text-slate-600'}`}>
-                    {'★'.repeat(character.rarity)}
+            {/* Info */}
+            <div className="mt-2 space-y-1 text-center">
+                <div className="truncate text-xs font-bold sm:text-sm" style={{ color: 'var(--neutral-800)' }}>
+                    {character.name}
                 </div>
-                <div className="text-xs text-slate-500">
-                    {new Date(character.releaseDate).toLocaleDateString('ja-JP')}
+                <div
+                    className="mx-auto w-fit rounded-full px-2.5 py-0.5 text-[10px] font-bold text-white shadow-sm"
+                    style={{ background: rarity.gradient }}
+                >
+                    {rarity.label}
                 </div>
-            </div>
-
-            <div className="mt-3 flex w-full flex-wrap justify-center gap-3 px-3 text-xs font-medium text-slate-600">
-                <span className="rounded-md bg-slate-100 px-3 py-1">{character.school}</span>
-
             </div>
         </div>
     );

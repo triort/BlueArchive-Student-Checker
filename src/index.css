@@ -1,27 +1,47 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
+/* ===== Design System ===== */
 :root {
-  font-family: system-ui, -apple-system, sans-serif;
+  /* Blue Archive inspired palette */
+  --ba-sky-100: #E8F4FD;
+  --ba-sky-200: #B8DFFB;
+  --ba-sky-300: #7EC8F8;
+  --ba-sky-400: #56CCF2;
+  --ba-sky-500: #2D9CDB;
+  --ba-sky-600: #2F80ED;
+  --ba-sky-700: #1A6DD1;
+
+  --ba-pink-400: #F2A7C3;
+  --ba-pink-500: #EB5286;
+
+  --ba-gold-400: #F2C94C;
+  --ba-gold-500: #E6A817;
+
+  --ba-purple-400: #BB6BD9;
+  --ba-purple-500: #9B51E0;
+
+  /* Neutral palette */
+  --neutral-50: #F8FAFC;
+  --neutral-100: #F1F5F9;
+  --neutral-200: #E2E8F0;
+  --neutral-300: #CBD5E1;
+  --neutral-400: #94A3B8;
+  --neutral-500: #64748B;
+  --neutral-600: #475569;
+  --neutral-700: #334155;
+  --neutral-800: #1E293B;
+  --neutral-900: #0F172A;
+
+  /* Semantic */
+  --glass-bg: rgba(255, 255, 255, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.08);
+
+  /* Typography */
+  font-family: 'Inter', 'Noto Sans JP', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   font-weight: 400;
-
-  /* フラットデザインカラーパレット */
-  --primary-color: #3498db;
-  --primary-dark: #2980b9;
-  --secondary-color: #95a5a6;
-  --success-color: #2ecc71;
-  --warning-color: #f39c12;
-  --danger-color: #e74c3c;
-  --background-color: #ecf0f1;
-  --surface-color: #ffffff;
-  --text-primary: #2c3e50;
-  --text-secondary: #7f8c8d;
-  --border-color: #bdc3c7;
-
-  color: var(--text-primary);
-  background-color: var(--background-color);
+  color: var(--neutral-800);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -29,96 +49,141 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
-}
-
+/* ===== Global Styles ===== */
 body {
-  /* margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh; */
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(165deg, var(--ba-sky-100) 0%, #F0F4FF 30%, #FEFEFE 60%, var(--ba-sky-100) 100%);
+  background-attachment: fixed;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+/* ===== Glassmorphism Card ===== */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  box-shadow: var(--glass-shadow);
 }
 
-/* フラットデザイン用のボタンスタイル */
+/* ===== Buttons ===== */
 button {
-  border-radius: 4px;
   border: none;
-  padding: 0.75rem 1.5rem;
-  font-size: 0.875rem;
-  font-weight: 500;
   font-family: inherit;
-  background-color: var(--primary-color);
-  color: var(--surface-color);
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: all 0.2s ease;
 }
 
-button:disabled {
-  background-color: var(--secondary-color);
-  cursor: not-allowed;
+button:active {
+  transform: scale(0.97);
 }
 
-/* フラットデザイン用の共通スタイル */
-.flat-card {
-  background-color: var(--surface-color);
-  border-radius: inherit;
-  box-shadow: none;
-}
-
-.flat-input {
-  /* border: 1px solid var(--border-color); */
-  border-radius: 4px;
-  padding: 0.75rem;
+/* ===== Form Controls ===== */
+.ba-select {
+  appearance: none;
+  background-color: rgba(241, 245, 249, 0.7);
+  border: 1px solid var(--neutral-200);
+  border-radius: 12px;
+  padding: 10px 36px 10px 14px;
   font-size: 0.875rem;
-  background-color: var(--surface-color);
-  color: var(--text-primary);
+  font-family: inherit;
+  color: var(--neutral-700);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2364748B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
   width: 100%;
 }
 
-.flat-input:focus {
+.ba-select:focus {
   outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+  border-color: var(--ba-sky-400);
+  box-shadow: 0 0 0 3px rgba(86, 204, 242, 0.15);
 }
 
-.character-card {
-  margin: 0;
+.ba-input {
+  background-color: rgba(241, 245, 249, 0.7);
+  border: 1px solid var(--neutral-200);
+  border-radius: 12px;
+  padding: 10px 14px;
+  font-size: 0.875rem;
+  font-family: inherit;
+  color: var(--neutral-700);
+  transition: all 0.2s ease;
   width: 100%;
 }
 
-.filter-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
+.ba-input::placeholder {
+  color: var(--neutral-400);
 }
 
-.filter-panel {
-  padding: 0;
-  display: block;
-  gap: 0;
+.ba-input:focus {
+  outline: none;
+  border-color: var(--ba-sky-400);
+  box-shadow: 0 0 0 3px rgba(86, 204, 242, 0.15);
 }
 
-.filter-item {
-  margin: 0;
+/* ===== Animations ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.sort-button {
-  margin: 0;
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
 }
 
-img {
-  border-radius: 8px 8px 0 0;
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out both;
+}
+
+/* ===== Character Card ===== */
+.character-card {
+  width: 100%;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.character-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(31, 38, 135, 0.12);
+}
+
+.character-card img {
+  border-radius: 10px;
+}
+
+/* ===== Progress Bar ===== */
+.progress-bar-fill {
+  background: linear-gradient(90deg, var(--ba-sky-400), var(--ba-sky-600));
+  background-size: 200% 100%;
+  animation: shimmer 2s ease-in-out infinite;
+  border-radius: 999px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--neutral-300);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neutral-400);
 }
