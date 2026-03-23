@@ -53,7 +53,7 @@
 body {
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(165deg, var(--ba-sky-100) 0%, #F0F4FF 30%, #FEFEFE 60%, var(--ba-sky-100) 100%);
+  background: var(--ba-sky-100);
   background-attachment: fixed;
 }
 
@@ -72,11 +72,6 @@ button {
   border: none;
   font-family: inherit;
   cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-button:active {
-  transform: scale(0.97);
 }
 
 /* ===== Form Controls ===== */
@@ -125,36 +120,11 @@ button:active {
   box-shadow: 0 0 0 3px rgba(86, 204, 242, 0.15);
 }
 
-/* ===== Animations ===== */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.4s ease-out both;
-}
 
 /* ===== Character Card ===== */
 .character-card {
   width: 100%;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.character-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 28px rgba(31, 38, 135, 0.12);
 }
 
 .character-card img {
@@ -163,11 +133,8 @@ button:active {
 
 /* ===== Progress Bar ===== */
 .progress-bar-fill {
-  background: linear-gradient(90deg, var(--ba-sky-400), var(--ba-sky-600));
-  background-size: 200% 100%;
-  animation: shimmer 2s ease-in-out infinite;
+  background: var(--ba-sky-500);
   border-radius: 999px;
-  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ===== Scrollbar ===== */

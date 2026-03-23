@@ -2,8 +2,8 @@ export const SaveImageButton = ({ onClick }: { onClick: () => void }) => {
     return (
         <button
             onClick={onClick}
-            className="flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-white shadow-md transition-all hover:-translate-y-0.5 hover:shadow-lg"
-            style={{ background: 'linear-gradient(135deg, #27AE60, #2ECC71)' }}
+            className="flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white shadow-md"
+            style={{ background: '#27AE60' }}
         >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />

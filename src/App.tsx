@@ -38,21 +38,14 @@ const App = () => {
   const { canvasRef, exportImage } = useImageExporter(students, ownershipPercentage, ownedCount);
 
   return (
-    <div className="min-h-screen pb-12">
+    <div className="min-h-screen pb-12 lg:mx-20 mx-4">
       {/* Header */}
-      <header className="mb-8 text-center">
+      <header className="mb-8 mt-10 text-center">
         <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl"
-          style={{
-            background: 'linear-gradient(135deg, var(--ba-sky-600), var(--ba-sky-400))',
-            WebkitBackgroundClip: 'text',
-            WebkitTextFillColor: 'transparent',
-          }}
+          style={{ color: 'var(--ba-sky-600)' }}
         >
-          ブルアカ 生徒所持チェッカー
+          キャラクターチェッカー
         </h1>
-        <p className="mt-2 text-sm" style={{ color: 'var(--neutral-500)' }}>
-          キャラクターをクリックして所持状況を管理
-        </p>
       </header>
 
       <StatusBar
@@ -66,11 +59,11 @@ const App = () => {
         <SaveImageButton onClick={exportImage} />
         <button
           onClick={() => setIsFilterVisible(!isFilterVisible)}
-          className="glass-card flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:shadow-lg"
+          className="glass-card flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold"
           style={{
             color: isFilterVisible ? 'white' : 'var(--ba-sky-600)',
             background: isFilterVisible
-              ? 'linear-gradient(135deg, var(--ba-sky-500), var(--ba-sky-600))'
+              ? 'var(--ba-sky-600)'
               : 'var(--glass-bg)',
           }}
         >
@@ -82,7 +75,7 @@ const App = () => {
       </div>
 
       {isFilterVisible && (
-        <div className="animate-fade-in-up">
+        <div>
           <FilterPanel
             searchTerm={searchTerm}
             setSearchTerm={setSearchTerm}

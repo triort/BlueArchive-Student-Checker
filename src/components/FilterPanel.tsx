@@ -54,7 +54,7 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
                 {/* レアリティ */}
                 <div className="space-y-1.5">
                     <label className="block text-xs font-semibold uppercase tracking-wider" style={{ color: 'var(--neutral-500)' }}>
-                        レアリティ
+                        初期レアリティ
                     </label>
                     <select
                         value={filterRarity}
@@ -117,12 +117,12 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
                         >
                             <option value="releaseDate">実装日</option>
                             <option value="name">名前</option>
-                            <option value="rarity">レアリティ</option>
+                            <option value="rarity">初期レアリティ</option>
                         </select>
                         <button
                             onClick={() => setSortDirection(sortDirection === 'asc' ? 'desc' : 'asc')}
-                            className="flex items-center justify-center px-3 text-sm font-bold text-white transition-colors"
-                            style={{ background: 'linear-gradient(135deg, var(--ba-sky-500), var(--ba-sky-600))' }}
+                            className="flex items-center justify-center px-3 text-sm font-bold text-white"
+                            style={{ background: 'var(--ba-sky-600)' }}
                         >
                             {sortDirection === 'asc' ? '↑' : '↓'}
                         </button>
@@ -148,14 +148,14 @@ export const FilterPanel: React.FC<FilterPanelProps> = ({
                             <div className="flex gap-1.5">
                                 <button
                                     onClick={() => toggleAllByRarity(rarity, true)}
-                                    className="rounded-lg px-3 py-1.5 text-xs font-semibold text-white transition-all hover:brightness-110"
+                                    className="rounded-lg px-3 py-1.5 text-xs font-semibold text-white"
                                     style={{ background: color }}
                                 >
                                     所持
                                 </button>
                                 <button
                                     onClick={() => toggleAllByRarity(rarity, false)}
-                                    className="rounded-lg px-3 py-1.5 text-xs font-semibold transition-all hover:brightness-90"
+                                    className="rounded-lg px-3 py-1.5 text-xs font-semibold"
                                     style={{ backgroundColor: 'var(--neutral-200)', color: 'var(--neutral-600)' }}
                                 >
                                     未所持
