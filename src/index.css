@@ -38,7 +38,7 @@
   --glass-shadow: 0 8px 32px rgba(31, 38, 135, 0.08);
 
   /* Typography */
-  font-family: 'LINE Seed JP', 'Baskervville', 'Hina Mincho', system-ui, -apple-system, sans-serif;
+  font-family: 'Inter', 'Noto Sans JP', system-ui, -apple-system, sans-serif;
   line-height: 1.6;
   font-weight: 400;
   color: var(--neutral-800);
